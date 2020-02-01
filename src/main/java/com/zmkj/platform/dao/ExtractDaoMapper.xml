@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件配置内容 -->
+<!-- namespace 属性保证唯一，如果是基于接口的编程 必须是接口的全名称 -->
+<mapper namespace="com.zmkj.platform.dao.ExtractDao">
+
+	<insert id="saveExtract" parameterType="Extract">
+		insert into extract (aid,money,status)
+		values(#{agent.id},#{money},#{status})
+	</insert>
+
+	<select id="findExtractByAid" resultType="Extract">
+		select e.id,e.aid 'agent.id',e.money,e.status,e.create_time 'createTime',a.website_name 'agent.websiteName',a.t_name 'agent.tName',a.t_account 'agent.tAccount' from extract e left join agents a on a.id = e.aid where e.aid = #{aid} order by e.create_time desc
+	</select>
+
+	<select id="findAllExtract" resultType="Extract">
+		select e.id,e.aid 'agent.id',e.money,e.status,e.create_time 'createTime',a.website_name 'agent.websiteName',a.t_name 'agent.tName',a.t_account 'agent.tAccount' from extract e left join agents a on a.id = e.aid order by e.create_time desc
+	</select>
+
+	<update id="updateExtract">
+		update extract
+		set status = #{status}
+		where id = #{id}
+	</update>
+
+	<select id="findExtractById" resultType="Extract">
+		select id,aid 'agent.id',money,status,create_time from extract where id = #{id} order by create_time desc
+	</select>
+</mapper>

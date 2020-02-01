@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件配置内容 -->
+<!-- namespace 属性保证唯一，如果是基于接口的编程 必须是接口的全名称 -->
+<mapper namespace="com.zmkj.platform.dao.PriceDao">
+	<insert id="savePrice" parameterType="Price">
+		insert into priceclass(cid,price,parent_price,aid) values(#{commodity.id},#{price},#{parentPrice},#{agent.id})
+	</insert>
+
+	<update id="updatePrice" parameterType="Price">
+		update priceclass
+		<trim prefix="set" suffixOverrides=",">
+			<if test="price!=null">price=#{price},</if>
+			<if test="parentPrice!=null">parent_price=#{parentPrice},</if>
+		</trim>
+		where id = #{id}
+	</update>
+	
+	<select id="findPriceByAid" resultType="Price">
+		select id,cid 'commodity.id',price,aid 'agent.id',parent_price 'parentPrice' from priceclass where aid = #{id}
+	</select>
+	<select id="findPriceByAidAndCid" resultType="Price">
+		select id,cid 'commodity.id',price,aid 'agent.id',parent_price 'parentPrice' from priceclass where aid = #{id} and cid = #{cid}
+	</select>
+
+	<select id="findPriceById" resultType="Price">
+		select id,cid 'commodity.id',price,aid 'agent.id',parent_price 'parentPrice' from priceclass where id = #{id}
+	</select>
+
+	<delete id="deletePrice">
+		delete from priceclass where id = #{id}
+	</delete>
+	<delete id="deleteByCid">
+		delete from priceclass where cid = #{cid}
+	</delete>
+</mapper>

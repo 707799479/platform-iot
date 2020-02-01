@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件配置内容 -->
+<!-- namespace 属性保证唯一，如果是基于接口的编程 必须是接口的全名称 -->
+<mapper namespace="com.zmkj.platform.dao.OrderDao">
+
+	<insert id="insertOrder" parameterType="Order">
+		insert into `order`(number,status,cid,pid,xd_name,xd_phone,xd_address,sfid,img_url,img_url2,img_url3,count,aid,pay_type,total_price)
+		values(#{number},#{status},#{commodity.id},#{price.id},#{xdName},#{xdPhone},#{xdAddress},#{sfid},#{imgUrl},#{imgUrl2},#{imgUrl3},#{count},#{agent.id},#{payType},#{totalPrice})
+	</insert>
+
+	<select id="findMyOrder" resultType="Order">
+		select
+		number,
+		o.status,
+		o.cid 'commodity.id',
+		c.name 'commodity.name',
+		c.aid 'commodity.agent.id',
+		o.pid 'price.id',
+		o.xd_name 'xdName',
+		o.xd_phone 'xdPhone',
+		o.xd_address 'xdAddress',
+		o.sfid,
+		o.img_url 'imgUrl',
+		o.img_url2 'imgUrl2',
+		o.img_url3 'imgUrl3',
+		o.count,
+		o.aid 'agent.id',
+		o.pay_type 'payType',
+		o.total_price 'totalPrice',
+		o.create_time 'createTime'
+		from `order` o
+		left join commodity c on c.id = o.cid
+		where
+		o.aid = #{aid}
+		and o.status != 0
+		order by o.create_time desc
+	</select>
+
+
+	<select id="findMyOrderByStatus" resultType="Order">
+		select
+		number,
+		o.status,
+		o.cid 'commodity.id',
+		c.name 'commodity.name',
+		o.pid 'price.id',
+		o.xd_name 'xdName',
+		o.xd_phone 'xdPhone',
+		o.xd_address 'xdAddress',
+		o.sfid,
+		o.img_url 'imgUrl',
+		o.img_url2 'imgUrl2',
+		o.img_url3 'imgUrl3',
+		o.count,
+		o.aid 'agent.id',
+		o.pay_type 'payType',
+		o.total_price 'totalPrice',
+		o.create_time 'createTime'
+		from `order` o
+		left join commodity c on c.id = o.cid
+		where
+		o.aid = #{aid}
+		and c.aid = #{aid}
+		<if test="cid!=null">
+			AND o.cid = #{cid}
+		</if>
+		and o.status =  #{status}
+		order by o.create_time desc
+	</select>
+
+	<select id="findAllOrderByStatus" resultType="Order">
+		SELECT
+			o.id,
+			o.number,
+			o.STATUS,
+			o.cid 'commodity.id',
+			c.name 'commodity.name',
+			o.pid 'price.id',
+			o.xd_name 'xdName',
+			o.xd_phone 'xdPhone',
+			o.xd_address 'xdAddress',
+			o.sfid,
+			o.img_url 'imgUrl',
+			o.img_url2 'imgUrl2',
+			o.img_url3 'imgUrl3',
+			o.count,
+			o.aid 'agent.id',
+			o.pay_type 'payType',
+			o.total_price 'totalPrice',
+			o.create_time 'createTime'
+		FROM
+			`order` o
+			left join commodity c on c.id = o.cid
+		where
+			status = #{status}
+			<if test="cid!=null">
+				AND o.cid = #{cid}
+			</if>
+			AND o.cid not in (select id from commodity where aid != #{aid})
+			order by o.create_time desc
+	</select>
+
+	<select id="findAllOrder" resultType="Order">
+		SELECT
+			o.id,
+			o.number,
+			o.STATUS,
+			o.cid 'commodity.id',
+			c.name 'commodity.name',
+			o.pid 'price.id',
+			o.xd_name 'xdName',
+			o.xd_phone 'xdPhone',
+			o.xd_address 'xdAddress',
+			o.sfid,
+			o.img_url 'imgUrl',
+			o.img_url2 'imgUrl2',
+			o.img_url3 'imgUrl3',
+			o.count,
+			o.aid 'agent.id',
+			o.pay_type 'payType',
+			o.total_price 'totalPrice',
+			o.create_time 'createTime'
+		FROM
+			`order` o
+			left join commodity c on c.id = o.cid
+		where
+			o.status != 0
+			AND o.cid not in (select id from commodity where aid != #{id})
+			order by o.create_time desc
+	</select>
+
+	<update id="updateOrder">
+		update `order` set status = #{status} where number = #{number}
+	</update>
+
+	<select id="findOrderByNo" resultType="Order">
+		select
+		o.number,
+		o.status,
+		o.cid 'commodity.id',
+		c.name 'commodity.name',
+		c.aid 'commodity.agent.id',
+		o.pid 'price.id',
+		o.xd_name 'xdName',
+		o.xd_phone 'xdPhone',
+		o.xd_address 'xdAddress',
+		o.sfid,
+		o.img_url 'imgUrl',
+		o.img_url2 'imgUrl2',
+		o.img_url3 'imgUrl3',
+		o.count,
+		o.aid 'agent.id',
+		o.pay_type 'payType',
+		o.total_price 'totalPrice',
+		o.create_time 'createTime'
+		from `order` o
+		left join commodity c on c.id = o.cid
+		where
+		o.number = #{no}
+	</select>
+
+	<select id="findByPhoneCount" resultType="java.lang.Integer">
+		select count(*) from `order` where xd_phone = #{iccid} and status != 0
+	</select>
+    <select id="findByIccid" resultType="com.zmkj.platform.entity.Order">
+		select xd_address 'xdAddress' from `order` where id = (select max(id) from `order` where xd_phone = #{iccid})
+	</select>
+</mapper>

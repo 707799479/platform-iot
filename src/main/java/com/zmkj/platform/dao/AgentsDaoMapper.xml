@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件配置内容 -->
+<!-- namespace 属性保证唯一，如果是基于接口的编程 必须是接口的全名称 -->
+<mapper namespace="com.zmkj.platform.dao.AgentsDao">
+	<select id="findAgents" resultType="com.zmkj.platform.entity.Agents">
+		select img,id,account,`password`,domain,notice,parent_id 'parentId',qq,`level`,website_name 'websiteName',agent_price 'agentPrice',money,level
+		from agents where `domain` = #{domain} and is_delete = 0 order by create_time desc
+	</select>
+
+	<insert id="saveAgent" parameterType="com.zmkj.platform.entity.Agents" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		insert into agents(account,password,domain,website_name,notice,parent_id,qq,level,agent_price,money,t_account,t_name) values(#{account},#{password},#{domain},#{websiteName},#{notice},#{parentId},#{qq},#{level},#{agentPrice},0,#{tAccount},#{tName})
+	</insert>
+
+	<select id="findAgentsByAccount" resultType="com.zmkj.platform.entity.Agents">
+		select img,id,account,`password`,domain,notice,parent_id 'parentId',qq,`level`,website_name 'websiteName',agent_price 'agentPrice',money,level
+		from agents where `account` = #{account} and is_delete = 0
+	</select>
+
+	<update id="updateAgent" parameterType="com.zmkj.platform.entity.Agents">
+		update agents
+		<trim prefix="set" suffixOverrides=",">
+			<if test="websiteName!=null">website_name=#{websiteName},</if>
+			<if test="notice!=null">notice=#{notice},</if>
+			<if test="qq!=null">qq=#{qq},</if>
+			<if test="domain!=null">domain=#{domain},</if>
+			<if test="password!=null">password=#{password},</if>
+			<if test="agentPrice!=null">agent_price=#{agentPrice},</if>
+			<if test="money!=null">money=#{money},</if>
+			<if test="level!=null">level=#{level},</if>
+			<if test="tName!=null">t_name=#{tName},</if>
+			<if test="tAccount!=null">t_account=#{tAccount},</if>
+			<if test="img!=null">img=#{img},</if>
+		</trim>
+		where id = #{id}
+		and is_delete = 0
+	</update>
+
+	<select id="findAgentsAdmin" resultType="com.zmkj.platform.entity.Agents">
+		select img,id,account,`password`,domain,notice,parent_id 'parentId',qq,`level`,website_name 'websiteName',agent_price 'agentPrice',money,level
+		from agents where `parent_id` = 0
+	</select>
+
+	<select id="findMyAgents" resultType="com.zmkj.platform.entity.Agents">
+		select
+			img,
+			id,
+			account,
+			`password`,
+			domain,
+			notice,
+			parent_id 'parentId',
+			qq,
+			`level`,
+			website_name 'websiteName',
+			agent_price 'agentPrice',
+			money,
+			level,
+			(select count(0) from agents where parent_id = a.id) 'agentNum',
+			t_account 'tAccount',
+			t_name 'tName',
+			create_time 'createTime'
+		from
+			agents a
+		where
+			parent_id = #{aid} and is_delete = 0 order by create_time desc
+	</select>
+
+	<update id="deleteAgent">
+		update agents set is_delete = 1,domain =CONCAT(domain,':',now()),account = CONCAT(account,':',now()) where id = #{id}
+	</update>
+
+	<update id="getNewPwd">
+		update agents set password = '123456' where id = #{id}
+	</update>
+
+	<select id="findAccountNum" resultType="int">
+		select count(0) from agents where account = #{account}
+	</select>
+
+	<select id="findDomainNum" resultType="int">
+		select count(0) from agents where domain = #{domain}
+	</select>
+
+	<select id="findAgentsById" resultType="com.zmkj.platform.entity.Agents">
+		select
+			img,
+			id,
+			account,
+			`password`,
+			domain,
+			notice,
+			parent_id 'parentId',
+			qq,
+			`level`,
+			website_name 'websiteName',
+			agent_price 'agentPrice',
+			money,
+			level,
+			t_account 'tAccount',
+			t_name 'tName',
+			create_time 'createTime'
+		from
+			agents a
+		where
+			id = #{id}
+	</select>
+    <select id="findTodayMoney" resultType="java.lang.Double">
+		select if(sum(price-if(parent_price is null,0,parent_price)) is null,0, sum(price-if(parent_price is null,0,parent_price))) from `order` o left join priceclass p on p.cid = o.cid
+		where o.aid = #{aid} and to_days(o.create_time) = to_days(now()) and o.status != 0 and p.aid = #{aid}
+	</select>
+
+</mapper>

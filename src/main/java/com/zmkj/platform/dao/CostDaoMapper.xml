@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件配置内容 -->
+<!-- namespace 属性保证唯一，如果是基于接口的编程 必须是接口的全名称 -->
+<mapper namespace="com.zmkj.platform.dao.CostDao">
+	<select id="findCosts" resultType="Map">
+		select * from cost order by sort
+	</select>
+
+	<update id="updateCost" parameterType="Map">
+		update cost set note = #{note},sort = #{sort} where id = #{id}
+	</update>
+	
+	<insert id="insertCost" parameterType="Map">
+		insert into cost(note,sort) values(#{note},#{sort})
+	</insert>
+
+	<delete id="deleteCost">
+		delete from cost where id = #{id}
+	</delete>
+
+</mapper>

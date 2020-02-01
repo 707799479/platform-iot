@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件配置内容 -->
+<!-- namespace 属性保证唯一，如果是基于接口的编程 必须是接口的全名称 -->
+<mapper namespace="com.zmkj.platform.dao.ConfigDao">
+	<select id="findConfig" resultType="Map">
+		select * from config
+	</select>
+	<update id="saveConfig" parameterType="Map">
+		update config set number = #{number},domain = #{domain},notice = #{notice},noaddress = #{noaddress} where id = 100000
+	</update>
+
+</mapper>

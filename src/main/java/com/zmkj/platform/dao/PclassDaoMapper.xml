@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件配置内容 -->
+<!-- namespace 属性保证唯一，如果是基于接口的编程 必须是接口的全名称 -->
+<mapper namespace="com.zmkj.platform.dao.PclassDao">
+	<select id="findPclass" resultType="Pclass">
+		select c.*,a.id 'agent.id' from class c left join agents a on a.id = c.aid order by sort
+	</select>
+	<select id="checkFreeCard" resultType="java.lang.Integer">
+		select count(*) from class where id = #{pcid} and free = 1
+	</select>
+    <select id="findPclassById" resultType="com.zmkj.platform.entity.Pclass">
+		select * from class where id = #{id}
+	</select>
+
+    <insert id="savePclass" parameterType="Pclass">
+		insert into class (name,note,sort,aid) values(#{name},#{note},#{sort},#{agent.id})
+	</insert>
+
+	<update id="updatePclass">
+		update class set name = #{name},note = #{note},sort = #{sort} where id = #{id}
+	</update>
+
+	<delete id="deletePclass">
+		delete from class where id = #{id}
+	</delete>
+</mapper>

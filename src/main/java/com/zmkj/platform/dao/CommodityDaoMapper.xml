@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件配置内容 -->
+<!-- namespace 属性保证唯一，如果是基于接口的编程 必须是接口的全名称 -->
+<mapper namespace="com.zmkj.platform.dao.CommodityDao">
+    <select id="findCommodityList" resultType="Commodity">
+        select c.id,c.xiansu,c.day,c.xuliang,c.cid,c.name,c.aid 'agent.id',c.sort,c.img_url imgUrl,c.note,c.have_img haveImg,p.price from commodity c LEFT JOIN priceclass p ON c.id = p.cid where p.type = 1
+        AND p.aid = #{aid} AND c.cid = #{pid} and (c.aid = #{system_admin_id} or c.aid = #{aid}) order by sort
+
+    </select>
+    <select id="findCommodity" resultType="Commodity">
+        SELECT
+            c.id,
+            c.xuliang,
+            c.xiansu,
+            c.day,
+            c.cid 'pclass.id',
+            c.name,
+            cl.name 'pclass.name',
+            c.aid 'agent.id',
+            c.sort,
+            c.img_url imgUrl,
+            c.note,
+            c.have_img haveImg,
+			p.price,
+			p.parent_price 'parentPrice'
+        FROM
+            commodity c
+            LEFT JOIN class cl ON cl.id = c.cid
+			left join priceclass p on p.cid = c.id
+        WHERE
+            c.id = #{cid}
+            and p.aid = #{aid}
+    </select>
+    <select id="findAllCommodity" resultType="Commodity">
+        SELECT
+            c.id,
+            c.xuliang,
+            c.day,
+            c.xiansu,
+            c.cid,
+            c.name,
+            c.aid 'agent.id',
+            c.sort,
+            c.img_url imgUrl,
+            c.note,
+            c.have_img haveImg,
+            cl.name 'pclass.name',
+						p.price ,
+						p.parent_price 'parentPrice'
+        FROM
+            commodity c
+        LEFT JOIN class cl ON cl.id = c.cid
+				left join priceclass p on p.cid = c.id
+        WHERE
+				p.aid = #{aid}
+				and c.have_img != 1
+    </select>
+
+    <select id="findCLassCommodity" resultType="Commodity">
+        SELECT
+            c.id,
+            c.xuliang,
+            c.xiansu,
+            c.day,
+            c.cid,
+            c.name,
+            c.aid 'agent.id',
+            c.sort,
+            c.img_url imgUrl,
+            c.note,
+            c.have_img haveImg,
+            cl.name 'pclass.name',
+						p.price ,
+						p.parent_price 'parentPrice'
+        FROM
+            commodity c
+        LEFT JOIN class cl ON cl.id = c.cid
+				left join priceclass p on p.cid = c.id
+        WHERE
+				p.aid = #{aid}
+        AND c.cid = #{cid}
+        and c.have_img != 1
+    </select>
+    <select id="findCommodityByid" resultType="com.zmkj.platform.entity.Commodity">
+         SELECT
+            c.id,
+            c.xuliang,
+            c.xiansu,
+            c.day,
+            c.cid 'pclass.id',
+            c.name,
+            c.aid 'agent.id',
+            c.sort,
+            c.img_url imgUrl,
+            c.note,
+            c.have_img haveImg
+        FROM
+            commodity c
+        WHERE
+            c.id = #{id}
+    </select>
+
+    <insert id="saveCommodity" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into commodity(cid,name,aid,sort,img_url,note,have_img,xiansu,xuliang,`day`)
+        values(#{pclass.id},#{name},#{agent.id},#{sort},#{imgUrl},#{note},#{haveImg},#{xiansu},#{xuliang},#{day})
+    </insert>
+
+    <delete id="deleteCommodity">
+        delete from commodity where id = #{cid}
+    </delete>
+
+    <update id="editCommodity" parameterType="Commodity">
+        update commodity
+        <trim prefix="set" suffixOverrides=",">
+            <if test="pclass.id!=null">cid=#{pclass.id},</if>
+            <if test="name!=null">name=#{name},</if>
+            <if test="note!=null">note=#{note},</if>
+            <if test="imgUrl!=null">img_url=#{imgUrl},</if>
+            <if test="haveImg!=null">have_img=#{haveImg},</if>
+            <if test="sort!=null">sort=#{sort},</if>
+            <if test="xuliang!=null">xuliang=#{xuliang},</if>
+            <if test="xiansu!=null">xiansu=#{xiansu},</if>
+            <if test="day!=null">day=#{day},</if>
+        </trim>
+        where id = #{id}
+    </update>
+</mapper>

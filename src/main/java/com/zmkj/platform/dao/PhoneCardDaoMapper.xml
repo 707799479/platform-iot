@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件配置内容 -->
+<!-- namespace 属性保证唯一，如果是基于接口的编程 必须是接口的全名称 -->
+<mapper namespace="com.zmkj.platform.dao.PhoneCardDao">
+
+
+	<resultMap id="allCard" type="Map">
+		<result property="pcid" column="pcid" jdbcType="INTEGER" />
+		<collection property="phoneCardList" ofType="Map"  javaType="ArrayList">
+			<id column="id" property="id" javaType="INTEGER"/>
+			<result property="pcid" column="pcid" jdbcType="INTEGER" />
+			<result property="msisdn" column="msisdn" jdbcType="VARCHAR" />
+			<result property="iccid" column="iccid" jdbcType="VARCHAR" />
+			<result property="upcid" column="upcid" jdbcType="INTEGER" />
+			<result property="name" column="name" jdbcType="VARCHAR" />
+			<result property="note" column="note" jdbcType="VARCHAR" />
+			<result property="cid" column="cid" jdbcType="INTEGER" />
+			<result property="xs" column="xs" jdbcType="VARCHAR" />
+			<result property="xiansu" column="xiansu" jdbcType="INTEGER" />
+			<result property="old_data" column="old_data" jdbcType="VARCHAR" />
+			<result property="ccid" column="ccid" jdbcType="INTEGER" />
+			<result property="gotime" column="gotime" jdbcType="INTEGER" />
+			<result property="cgotime" column="cgotime" jdbcType="INTEGER" />
+		</collection>
+	</resultMap>
+
+	<select id="findAllPhoneCard" resultMap="allCard">
+		SELECT
+			p.id,
+			p.pcid,
+			p.msisdn,
+			p.iccid,
+			p.upcid,
+			c.NAME,
+			c.note,
+			c.img_url xs,
+			p.cid,
+			p.ccid,
+			p.xiansu,
+			p.old_data,
+			TIMESTAMPDIFF(DAY,p.gotime,now()) gotime,
+			TIMESTAMPDIFF(DAY,p.cgotime,now()) cgotime
+		FROM
+			phone_card p
+			LEFT JOIN commodity c ON c.id = p.cid
+		WHERE
+			(p.cid is not null or p.ccid is not null)
+			and p.pcid = #{pcid}
+	</select>
+
+	<select id="findPhoneCardByMsisdn" resultType="Map">
+		select * from phone_card where msisdn = #{msisdn}
+	</select>
+
+	<select id="findPhoneCardByIccid" resultType="Map">
+		select * from phone_card where iccid = #{iccid}
+	</select>
+
+	<select id="findAllByPcid" resultType="Map">
+		select * from phone_card where pcid = #{pcid}
+	</select>
+	<select id="findPhones" resultType="java.lang.String">
+		select iccid from tempphone
+	</select>
+	<select id="findStartEndDate" resultType="java.util.Map">
+		SELECT
+	date_format( o.create_time, '%Y-%m-%d' ) go_time,
+	date_format(
+	IF
+		(
+			c.is30 = 1,
+			( SELECT last_day( curdate( ) ) ),
+			date_add( o.create_time, INTERVAL #{day} DAY )
+		),
+		'%Y-%m-%d'
+	) end_time
+FROM
+	`order` o
+	LEFT JOIN phone_card p ON p.iccid = o.xd_phone
+	LEFT JOIN class c ON c.id = p.pcid
+WHERE
+	o.id = ( SELECT max(id) FROM `order` WHERE xd_phone = #{iccid} AND status != 0 ) and o.status != 0
+	</select>
+	<select id="findPhoneCardByCidPage" resultType="java.util.Map">
+		select p.*,co.name coname,co.note countData from phone_card p left join commodity co on p.cid = co.id  where 1 = 1 <if test="aid!=1"> and p.aid = #{aid} </if><if test="search!=null"> and p.iccid like '${search}%'</if> limit #{first},#{limit}
+	</select>
+
+	<select id="findPhoneCardCountByCid" resultType="java.lang.Integer">
+		select count(0) from phone_card where  1 = 1 <if test="aid!=1"> and aid = #{aid} </if><if test="search!=null"> and iccid like '${search}%'</if>
+	</select>
+
+	<update id="update" parameterType="Map">
+		update phone_card
+		<trim prefix="set" suffixOverrides=",">
+			<if test="cid!=null">cid=#{cid},</if>
+			<if test="upcid!=null">upcid=#{upcid},</if>
+			<if test="isdown!=null">isdown=#{isdown},</if>
+			<if test="status!=null">status=#{status},</if>
+			<if test="ccid!=null">ccid=#{ccid},</if>
+			<if test="phone!=null">phone=#{phone},</if>
+			<if test="name!=null">name=#{name},</if>
+			<if test="sfid!=null">sfid=#{sfid},</if>
+		</trim>
+		where id = #{id}
+	</update>
+	
+	<update id="outData">
+		update phone_card set upcid = cid , cid = null , note = null where iccid = #{iccid}
+	</update>
+
+	<update id="updateDown">
+		update phone_card set cid = ccid,ccid = null,cgotime = null,gotime = now() where id = #{id}
+	</update>
+
+	<update id="updateNote">
+		update phone_card set note = #{note} where iccid = #{iccid}
+	</update>
+	<update id="updateData">
+		update phone_card set cid = #{cid} where pcid = #{pcid} and msisdn = #{data}
+	</update>
+	<update id="updateXianSu">
+		update phone_card set xiansu = #{xiansu} where id = #{id}
+	</update>
+	<update id="payUpdate">
+		update phone_card set
+		<if test="isCi">ccid = #{ccid},cgotime = now(),old_data = #{oldData}</if>
+		<if test="!isCi">cid = #{ccid},gotime = now(),status = 1,old_data = #{oldData}</if>
+		 where id = #{id}
+	</update>
+	<update id="updateTempPhone" >
+		update phone_card set cid = 47 ,status = 1,gotime = date_add(now(),INTERVAL 25 day) where iccid = #{iccid}
+	</update>
+	<update id="updateGoTime">
+		update phone_card set gotime = now() where msisdn = #{msisdn}
+	</update>
+	<update id="取消次月套餐">
+		update phone_card set ccid = null where iccid = #{iccid}
+	</update>
+	<update id="updateCard">
+		<if test="paid==1">
+			update phone_card set aid = #{aid} where iccid = #{iccid}
+		</if>
+		<if test="paid!=1">
+			update phone_card set aid = #{aid} where iccid = #{iccid} and aid = #{paid}
+		</if>
+	</update>
+
+	<select id="findMyCard" resultType="java.lang.Integer">
+		select * from
+	</select>
+
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmkj.platform.dao.TempOrderDao">
+
+    <insert id="saveTempOrder" parameterType="Map">
+        insert into temp_order(phone_id,status,create_time) values (#{phone_id},#{status},now())
+    </insert>
+    <select id="findAll" resultType="java.util.Map">
+        select t.id id,p.msisdn m,p.iccid i,DATE_FORMAT(t.create_time,'%Y-%m-%d %H:%i:%s') time from temp_order t left join phone_card p on t.phone_id = p.id where t.status != 1
+    </select>
+
+    <update id="update">
+        update temp_order set status = 1 where id = #{id}
+    </update>
+</mapper>

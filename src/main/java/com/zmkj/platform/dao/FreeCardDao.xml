@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zmkj.platform.dao.FreeCardDao">
+
+    <insert id="insertData" parameterType="Map">
+        insert into free_card(name,phone,address,pid,create_time) values(#{name},#{phone},#{address},#{pid},now())
+    </insert>
+    <update id="updateData">
+        update free_card set status = #{status} where id = #{id}
+    </update>
+    <select id="findDataByStatus" resultType="java.util.Map">
+        select * from free_card where status = #{status}
+    </select>
+    <select id="checkData" resultType="java.lang.Integer">
+        select count(*) from free_card where pid = #{id}
+    </select>
+</mapper>
