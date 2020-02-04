@@ -68,7 +68,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#tixian" aria-expanded="false" aria-controls="ui-basic">
-                    <i class="mdi mdi mdi-airplane menu-icon"></i>
+                    <i class="mdi mdi-cash-usd menu-icon"></i>
                     <span class="menu-title">提现</span>
                     <i class="menu-arrow"></i>
                 </a>
