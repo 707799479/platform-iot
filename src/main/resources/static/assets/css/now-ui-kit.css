@@ -5078,7 +5078,11 @@ Created using IcoMoon - icomoon.io
 }
 
 .footer {
-    padding: 24px 0;
+    margin: 24px 0;
+    border-radius: 30px !important;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 .footer.footer-default {
@@ -5371,14 +5375,16 @@ Created using IcoMoon - icomoon.io
 }
 
 .login-page .card-login.card-plain .form-control {
-    border-color: rgba(255, 255, 255, 0.5);
+    /*border-color: rgba(255, 255, 255, 0.5);*/
     color: #FFFFFF;
+    border: 1px solid #929292;
+    border-left: 0;
 }
 
 .login-page .card-login.card-plain .form-control:focus {
-    border-color: #FFFFFF;
+    border-color: #929292;
     background-color: transparent;
-    color: #FFFFFF;
+    color: #929292;
 }
 
 .login-page .card-login.card-plain .has-success:after,
@@ -5392,20 +5398,20 @@ Created using IcoMoon - icomoon.io
 
 .login-page .card-login.card-plain .input-group-addon {
     background-color: transparent;
-    border-color: rgba(255, 255, 255, 0.5);
-    color: #FFFFFF;
+    border-color: #929292;
+    color: #929292;
 }
 
 .login-page .card-login.card-plain .input-group-focus .input-group-addon {
     background-color: transparent;
-    border-color: #FFFFFF;
-    color: #FFFFFF;
+    border-color: #929292;
+    color: #929292;
 }
 
 .login-page .card-login.card-plain .form-group.form-group-no-border .form-control,
 .login-page .card-login.card-plain .input-group.form-group-no-border .form-control {
     background-color: rgba(255, 255, 255, 0.1);
-    color: #FFFFFF;
+    color: #929292;
 }
 
 .login-page .card-login.card-plain .form-group.form-group-no-border .form-control:focus,
@@ -5415,7 +5421,7 @@ Created using IcoMoon - icomoon.io
 .login-page .card-login.card-plain .input-group.form-group-no-border .form-control:active,
 .login-page .card-login.card-plain .input-group.form-group-no-border .form-control:active {
     background-color: rgba(255, 255, 255, 0.2);
-    color: #FFFFFF;
+    color: #333;
 }
 
 .login-page .card-login.card-plain .form-group.form-group-no-border .form-control+.input-group-addon,
@@ -5436,26 +5442,27 @@ Created using IcoMoon - icomoon.io
 .login-page .card-login.card-plain .form-group.form-group-no-border .form-control:focus+.input-group-addon,
 .login-page .card-login.card-plain .input-group.form-group-no-border .form-control:focus+.input-group-addon {
     background-color: rgba(255, 255, 255, 0.2);
-    color: #FFFFFF;
+    color: #929292;
 }
 
 .login-page .card-login.card-plain .form-group.form-group-no-border .input-group-addon,
 .login-page .card-login.card-plain .input-group.form-group-no-border .input-group-addon {
     background-color: rgba(255, 255, 255, 0.1);
-    border: none;
+    border: 1px solid #929292;
+    border-right: none;
     color: #FFFFFF;
 }
 
 .login-page .card-login.card-plain .form-group.form-group-no-border.input-group-focus .input-group-addon,
 .login-page .card-login.card-plain .input-group.form-group-no-border.input-group-focus .input-group-addon {
     background-color: rgba(255, 255, 255, 0.2);
-    color: #FFFFFF;
+    color: #929292;
 }
 
 .login-page .card-login.card-plain .input-group-addon,
 .login-page .card-login.card-plain .form-group.form-group-no-border .input-group-addon,
 .login-page .card-login.card-plain .input-group.form-group-no-border .input-group-addon {
-    color: rgba(255, 255, 255, 0.8);
+    color: #929292;
 }
 
 .login-page .link {
@@ -5555,20 +5562,60 @@ Created using IcoMoon - icomoon.io
 }
 
 .page-header:before {
-    background-color: rgba(0, 0, 0, 0.5);
+    /*background-color: rgba(0, 0, 0, 0.5);*/
 }
 
 .page-header[filter-color="orange"] {
-    background: rgba(44, 44, 44, 0.2);
-    /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(90deg, rgba(44, 44, 44, 0.2), rgba(224, 23, 3, 0.6));
-    /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(90deg, rgba(44, 44, 44, 0.2), rgba(224, 23, 3, 0.6));
-    /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(90deg, rgba(44, 44, 44, 0.2), rgba(224, 23, 3, 0.6));
-    /* For Firefox 3.6 to 15 */
-    background: linear-gradient(0deg, rgba(44, 44, 44, 0.2), rgba(224, 23, 3, 0.6));
-    /* Standard syntax */
+    /*background: rgba(44, 44, 44, 0.2);*/
+    /*!* For browsers that do not support gradients *!*/
+    /*background: -webkit-linear-gradient(90deg, rgba(44, 44, 44, 0.2), rgba(224, 23, 3, 0.6));*/
+    /*!* For Safari 5.1 to 6.0 *!*/
+    /*background: -o-linear-gradient(90deg, rgba(44, 44, 44, 0.2), rgba(224, 23, 3, 0.6));*/
+    /*!* For Opera 11.1 to 12.0 *!*/
+    /*background: -moz-linear-gradient(90deg, rgba(44, 44, 44, 0.2), rgba(224, 23, 3, 0.6));*/
+    /*!* For Firefox 3.6 to 15 *!*/
+    /*background: linear-gradient(0deg, rgba(44, 44, 44, 0.2), rgba(224, 23, 3, 0.6));*/
+    /*!* Standard syntax *!*/
+}
+
+.login-card {
+    width: 350px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 12px;
+    padding-top: 48px;
+}
+
+.btn-login {
+    width: 300%;
+    background: #a64bf4;
+    background: -webkit-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
+    background: -o-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
+    background: -moz-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
+    background: linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
+    left: -100%;
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    /*z-index: -1;*/
+}
+
+.footer:hover  .btn-login {
+    left: 0;
+}
+
+.footer .btn {
+    margin: 0;
+    background-color: transparent;
+    position: inherit;
+}
+
+.footer .btn:hover, .footer .btn:focus, .footer .btn.active, .footer .btn:active:focus, .footer .btn:active:hover {
+    background-color: transparent;
 }
 
 .page-header .container {

@@ -4,7 +4,11 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+  <link rel="apple-to
+
+
+
+    uch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>后台管理</title>
@@ -36,37 +40,40 @@
   </div>
 </nav>
 <!-- End Navbar -->
-<div class="page-header" filter-color="orange">
-  <div class="page-header-image" style="background-image:url(/assets/img/login.jpg)"></div>
+<div class="page-header">
+  <div class="page-header-image" style="background-image:url(/assets/img/bg-01.jpg)"></div>
   <div class="container">
     <div class="col-md-4 content-center">
-      <div class="card card-login card-plain">
-        <form id="login" class="form" method="post" action="/admin/login">
-          <div class="header header-primary text-center">
-            <div class="logo-container">
-              <img src="/assets/img/now-logo.png" alt="">
+      <div class="login-card">
+        <div class="card card-login card-plain">
+          <form id="login" class="form" method="post" action="/admin/login">
+            <div class="header header-primary text-center">
+              <div class="logo-container">
+                <img src="/assets/img/now-logo.png" alt="">
+              </div>
             </div>
-          </div>
-          <div class="content">
-            <div class="input-group form-group-no-border input-lg">
+            <div class="content">
+              <div class="input-group form-group-no-border input-lg">
                                 <span class="input-group-addon">
                                     <i class="now-ui-icons users_circle-08"></i>
                                 </span>
-              <input type="text" name="id" class="form-control" placeholder="用户名">
-            </div>
-            <div class="input-group form-group-no-border input-lg">
+                <input type="text" name="id" class="form-control" placeholder="用户名">
+              </div>
+              <div class="input-group form-group-no-border input-lg">
                                 <span class="input-group-addon">
                                     <i class="now-ui-icons text_caps-small"></i>
                                 </span>
-              <input type="password" name="pwd" placeholder="密码" class="form-control" />
+                <input type="password" name="pwd" placeholder="密码" class="form-control" />
+              </div>
             </div>
-          </div>
-          <p style="margin:1px;">${login_title}</p>
-          <div class="footer text-center">
-            <a href="javascript:document.getElementById('login').submit()" class="btn btn-primary btn-round btn-lg btn-block">登录</a>
-          </div>
+            <p style="margin:1px;color: #f53c3c;">${login_title}</p>
+            <div class="footer text-center">
+              <div class="btn-login"></div>
+              <a class="btn btn-round btn-lg btn-block" href="javascript:document.getElementById('login').submit()">登录</a>
+            </div>
 
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
