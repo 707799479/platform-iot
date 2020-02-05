@@ -12952,8 +12952,8 @@ input[type="button"].btn-block {
   line-height: 1.25;
   color: #007bff;
   background-color: #fff;
-  /*border: 1px solid #dee2e6;*/
-  border-radius: 50%;
+  border: 1px solid #dee2e6;
+  /*border-radius: 50%;*/
 }
 
 .page-link:hover {
@@ -12992,7 +12992,7 @@ input[type="button"].btn-block {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
-  border-radius: 50%;
+  /*border-radius: 50%;*/
 }
 
 .page-item.disabled .page-link {
@@ -17533,7 +17533,7 @@ input:focus {
   font-family: "Material Design Icons";
   display: block;
   position: absolute;
-  left: 0px;
+  left: 10px;
   top: 50%;
   -moz-transform: translateY(-50%);
   -o-transform: translateY(-50%);
@@ -18869,7 +18869,7 @@ code {
 }
 
 .purchase-popup {
-  background: rgba(191, 187, 187, 0.46);
+  background: #77baff;
   padding: 15px 20px;
   border-radius: 3px;
 }
@@ -18907,7 +18907,7 @@ code {
 .purchase-popup p {
   margin-bottom: auto;
   margin-top: auto;
-  color: #7e7e7e;
+  color: #fff;
   font-weight: 400;
   vertical-align: middle;
   line-height: 1;
@@ -20526,7 +20526,7 @@ code {
 }
 
 .form-control {
-  border: 1px solid #ebedf2;
+  border: 1px solid #ddd;
   font-family: "ubuntu-regular", sans-serif;
   font-size: 0.8125rem;
 }
@@ -20534,7 +20534,7 @@ code {
 select.form-control {
   padding: .4375rem .75rem;
   border: 0;
-  outline: 1px solid #ebedf2;
+  outline: 1px solid #ddd;
   color: #c9c8c8;
 }
 
@@ -20903,7 +20903,7 @@ dl li {
 
 .table thead th {
   color: #6A7C8F;
-  border-bottom: 1px solid #E6E8EB;
+  border-bottom: 1px solid #ddd;
   border-top: 0;
   border-bottom-width: 1px;
   font-family: "ubuntu-medium", sans-serif;
