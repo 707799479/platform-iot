@@ -8,9 +8,11 @@ import com.zmkj.platform.dao.PhoneCardDao;
 import com.zmkj.platform.service.PhoneCardService;
 import com.zmkj.platform.util.CoreFunction;
 import com.zmkj.platform.util.WFyidong;
+
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -223,5 +225,10 @@ public class PhoneCardServiceImpl implements PhoneCardService {
 
         return phoneCardDao.updateCard(cardNumber,aid,paid);
     }
+
+	@Override
+	public int phoneCardByCount(Integer aid) {
+		return phoneCardDao.phoneCardByCount(aid);
+	}
 
 }

@@ -101,6 +101,8 @@ public class AdminController {
         double money = nowAgent.getMoney();
         int orderCount = orderList.size();
         double todayMoney = agentsService.getTodayMoney(user_agent.getId());
+        int phoneCardByCount = phoneCardService.phoneCardByCount(user_agent.getId());
+        request.setAttribute("phoneCardByCount",phoneCardByCount);
         request.setAttribute("agentCount",agentCount);
         request.setAttribute("money",money);
         request.setAttribute("orderCount",orderCount);

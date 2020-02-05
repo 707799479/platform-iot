@@ -26,6 +26,12 @@
 			<result property="cgotime" column="cgotime" jdbcType="INTEGER" />
 		</collection>
 	</resultMap>
+	
+	<select id="phoneCardByCount" resultType="java.lang.Integer">
+			select count(p.id) from phone_card p
+			LEFT JOIN `order` o ON p.iccid = o.xd_phone
+			where p.status =1 and o.aid = #{aid}
+	</select>
 
 	<select id="findAllPhoneCard" resultMap="allCard">
 		SELECT

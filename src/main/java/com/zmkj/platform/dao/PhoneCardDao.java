@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface PhoneCardDao {
+	
+	int phoneCardByCount(Integer aid);
     List<Map<String,Object>> findAllPhoneCard(Integer pcid);
     Map<String,Object> findPhoneCardByMsisdn(String msisdn);
     Map<String,Object> findPhoneCardByIccid(String iccid);

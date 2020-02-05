@@ -4,6 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 public interface PhoneCardService {
+	/**
+	 * 获取激活卡数量
+	 * @param aid 代理id
+	 * @return
+	 */
+	int phoneCardByCount(Integer aid);
     List<Map<String,Object>> getAllPhoneCard(Integer pcid);
     Map<String,Object> getPhoneCardByIccid(String iccid);
     Map<String,Object> getPhoneCardByMsisdn(String msisdn);
