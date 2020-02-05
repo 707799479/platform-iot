@@ -34,7 +34,7 @@
         <div class="col-lg-3 col-md-6 stretch-card grid-margin">
             <div class="card text-63">
                 <div class="card-body">
-                    <h3 class="font-weight-normal mb-3">$ ${money}
+                    <h3 class="font-weight-normal mb-3">${phoneCardByCount}
                         <i class="mdi mdi-arrow-up mdi-36px c1"></i>
                     </h3>
                     <h6>激活总数</h6>
