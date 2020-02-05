@@ -52,7 +52,7 @@
             alert("提现金额有问题");
 
         } else {
-            window.location.href = '/admin/extra ct?s=1&money=' + money;
+            window.location.href = '/admin/extract?s=1&money=' + money;
         }
     }
 </script>

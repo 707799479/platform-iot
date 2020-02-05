@@ -5411,7 +5411,7 @@ Created using IcoMoon - icomoon.io
 .login-page .card-login.card-plain .form-group.form-group-no-border .form-control,
 .login-page .card-login.card-plain .input-group.form-group-no-border .form-control {
     background-color: rgba(255, 255, 255, 0.1);
-    color: #929292;
+    color: #333;
 }
 
 .login-page .card-login.card-plain .form-group.form-group-no-border .form-control:focus,

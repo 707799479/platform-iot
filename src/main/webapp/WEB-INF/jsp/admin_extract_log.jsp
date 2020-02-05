@@ -11,8 +11,8 @@
                         <h4 class="card-title">提现记录</h4>
                         <br>
                         <c:if test="${user_agent.parentId == 0}">
-                            <a class="btn btn-outline-primary btn-fw" href="/admin/outAllExtract">导出未处理并标记已处理</a>
-                            <a class="btn btn-outline-primary btn-fw" href="/admin/allExtractChange?type=2">全部退回</a>
+                            <a class="btn btn-warning btn-fw tx" href="/admin/outAllExtract">导出未处理并标记已处理</a>
+                            <a class="btn btn-danger btn-fw tx" href="/admin/allExtractChange?type=2">全部退回</a>
                             <br>
                         </c:if>
 
@@ -136,9 +136,9 @@
         var id = value;
         var result = "";
         <c:if test="${user_agent.parentId == 0}">
-        result += '<button id="bianji" onclick="update('+id+')" type="button" class="btn btn-gradient-primary btn-sm">完成</button>&nbsp;';
-        result += '<button id="bianji" onclick="updateTwo('+id+')" type="button" class="btn btn-gradient-primary btn-sm">退回</button>&nbsp;';
-        result += '<a class="btn btn-gradient-primary btn-sm" href="/admin/outPriceLog?id='+id+'">导出明细</a>&nbsp;';
+        result += '<button id="bianji" onclick="update('+id+')" type="button" class="btn btn-success btn-sm">完成</button>&nbsp;';
+        result += '<button id="bianji" onclick="updateTwo('+id+')" type="button" class="btn btn-danger btn-sm">退回</button>&nbsp;';
+        result += '<a class="btn btn-warning btn-sm" href="/admin/outPriceLog?id='+id+'">导出明细</a>&nbsp;';
         </c:if>
         <c:if test="${user_agent.parentId != 0}">
         result += '<p>-</p>&nbsp;';

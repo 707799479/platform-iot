@@ -56,12 +56,12 @@
     window.location.href = "/admin/addAgent";
   }
   function addAgent() {
-    var num = $(":input").length;
+    var num = $(":input[type='text']").length;
     for(var i = 0;i < num;i++){
-      var t = $(":input").eq(i).val().length;
+      var t = $(":input[type='text']").eq(i).val().length;
       if(t < 1){
         alert("不能有空项");
-        console.log($(":input").eq(i).html())
+        console.log($(":input[type='text']").eq(i).html())
         return;
       }
     }
