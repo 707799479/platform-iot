@@ -15,7 +15,7 @@
 	</insert>
 
 	<select id="findAgentsByAccount" resultType="com.zmkj.platform.entity.Agents">
-		select img,id,account,`password`,domain,notice,parent_id 'parentId',qq,`level`,website_name 'websiteName',agent_price 'agentPrice',money,level
+		select img,id,account,`password`,domain,notice,parent_id 'parentId',qq,`level`,website_name 'websiteName',agent_price 'agentPrice',money,level,t_name 'tName'
 		from agents where `account` = #{account} and is_delete = 0
 	</select>
 
