@@ -43,6 +43,17 @@
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item"> <a class="nav-link" href="/admin/commodityList">套餐列表</a></li>
                         <li class="nav-item"> <a class="nav-link" href="/admin/addCommodity">添加套餐</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#kachi" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="mdi mdi-access-point menu-icon"></i>
+                    <span class="menu-title">卡池</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="kachi">
+                    <ul class="nav flex-column sub-menu">
                         <li class="nav-item"> <a class="nav-link" href="/admin/commodityClass">通道列表</a></li>
                     </ul>
                 </div>

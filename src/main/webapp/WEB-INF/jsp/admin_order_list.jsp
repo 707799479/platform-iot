@@ -125,7 +125,7 @@
         },{
             field: 'payType',
             align: 'center',
-            title: '生效时间(now当月 down次月)',
+            title: '生效时间',
             valign: 'middle',
             formatter: loadPay
         } ]
@@ -136,12 +136,19 @@
         if(value == undefined || value == null){
             value = "-";
         }
-        if(value == 'qqpay'){
-            value = "QQ钱包";
-        }else if(value == 'wxpay'){
-            value = "微信";
-        }else if(value == 'alipay'){
-            value = "支付宝";
+        // if(value == 'qqpay'){
+        //     value = "QQ钱包";
+        // }else if(value == 'wxpay'){
+        //     value = "微信";
+        // }else if(value == 'alipay'){
+        //     value = "支付宝";
+        // }
+        if(value == 'now'){
+            value = "本月到账";
+        }else if (value == 'down'){
+            value = "次月到账";
+        }else {
+            value = "其它";
         }
         return '<p>'+value+'</p>';
     }
@@ -273,7 +280,7 @@
         },{
             field: 'payType',
             align: 'center',
-            title: '生效时间(now当月 down次月)',
+            title: '生效时间',
             valign: 'middle',
             formatter: loadPay
         },{
