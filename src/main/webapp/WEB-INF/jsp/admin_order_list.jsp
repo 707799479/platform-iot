@@ -86,38 +86,40 @@
             formatter: loadText
         },{
             field:'commodity.name',
-            title: '商品名称',
+            title: '套餐名称',
             align: 'center',
             valign: 'middle',
             formatter: loadText
-        },{
-            field:'createTime',
-            title: '下单时间',
-            align: 'center',
-            valign: 'middle',
-            formatter: loadDate
         }, {
             field: 'xdPhone',
             align: 'center',
             title: 'ICCID',
             valign: 'middle',
             formatter: loadText
+        },{
+            field:'createTime',
+            title: '充值时间',
+            align: 'center',
+            valign: 'middle',
+            formatter: loadDate
         }, {
             field: 'xdAddress',
             align: 'center',
-            title: '地址',
+            title: '激活地址',
             valign: 'middle',
             formatter: loadText
-        }, {
-            field: 'count',
-            align: 'center',
-            title: '数量',
-            valign: 'middle',
-            formatter: loadText
-        }, {
+        },
+        //     {
+        //     field: 'count',
+        //     align: 'center',
+        //     title: '数量',
+        //     valign: 'middle',
+        //     formatter: loadText
+        // },
+        {
             field: 'totalPrice',
             align: 'center',
-            title: '总价',
+            title: '充值金额',
             valign: 'middle',
             formatter: loadText
         },{
@@ -240,7 +242,7 @@
             formatter: loadText
         },{
             field:'commodity.name',
-            title: '商品名称',
+            title: '套餐名称',
             align: 'center',
             valign: 'middle',
             formatter: loadText
@@ -252,20 +254,20 @@
             formatter: loadText
         },{
             field:'createTime',
-            title: '下单时间',
+            title: '充值时间',
             align: 'center',
             valign: 'middle',
             formatter: loadDate
         }, {
             field: 'xdAddress',
             align: 'center',
-            title: '地址',
+            title: '激活地址',
             valign: 'middle',
             formatter: loadText
         }, {
             field: 'totalPrice',
             align: 'center',
-            title: '总价',
+            title: '充值金额',
             valign: 'middle',
             formatter: loadText
         },{

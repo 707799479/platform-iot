@@ -43,7 +43,7 @@
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item"> <a class="nav-link" href="/admin/commodityList">套餐列表</a></li>
                         <li class="nav-item"> <a class="nav-link" href="/admin/addCommodity">添加套餐</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="/admin/commodityClass">卡池</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="/admin/commodityClass">通道列表</a></li>
                     </ul>
                 </div>
             </li>
@@ -93,12 +93,12 @@
                     <span class="menu-title">订单管理</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin/updatePassword">
-                    <i class="mdi mdi-compass-outline menu-icon"></i>
-                    <span class="menu-title">修改密码</span>
-                </a>
-            </li>
+<%--            <li class="nav-item">--%>
+<%--                <a class="nav-link" href="/admin/updatePassword">--%>
+<%--                    <i class="mdi mdi-compass-outline menu-icon"></i>--%>
+<%--                    <span class="menu-title">修改密码</span>--%>
+<%--                </a>--%>
+<%--            </li>--%>
             <li class="nav-item">
                 <a class="nav-link" href="/admin/cardList">
                     <i class="mdi mdi-clipboard-text menu-icon"></i>

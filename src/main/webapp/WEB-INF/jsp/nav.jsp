@@ -19,13 +19,17 @@
                         <span class="availability-status online"></span>
                     </div>
                     <div class="nav-profile-text">
-                        <p class="mb-1 text-black">嗨，你好</p>
+                        <p class="mb-1 text-black">${user_agent.tName}</p>
                     </div>
                 </a>
                 <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                    <a class="dropdown-item" href="/admin/updatePassword">
+                        <i class="mdi mdi-compass-outline mr-2 text-primary"></i>
+                        <span class="menu-title">修改密码</span>
+                    </a>
                     <a class="dropdown-item" href="/admin/out">
-                        <i class="mdi mdi-logout mr-2 text-primary"></i>
-                        退出
+                        <i class="mdi mdi-arrow-left-bold-circle-outline mr-2 text-primary"></i>
+                        <span class="menu-title">退出</span>
                     </a>
                 </div>
             </li>

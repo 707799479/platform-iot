@@ -8,7 +8,7 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">卡池</h4>
+                        <h4 class="card-title">通道列表</h4>
                         <table id="table"></table>
                         <input type="hidden" id="admin_id" value="${system_admin.id}">
                         <input type="hidden" id="my_id" value="${user_agent.id}">
@@ -42,7 +42,7 @@
         pageSize: 10,//每页的记录行数（*）
         columns: [{
             field: 'name',
-            title: '分类名称'
+            title: '通道名称'
         }, {
             field: 'sort',
             title: '排序顺序'

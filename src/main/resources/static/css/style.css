@@ -17650,7 +17650,8 @@ input:focus {
 }
 
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown .dropdown-item i {
-  font-size: 17px;
+  font-size: 20px;
+  line-height: normal;
 }
 
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown .dropdown-item .ellipsis {
