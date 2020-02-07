@@ -40,6 +40,7 @@
 
         .bg-box .top .b-img {
             max-width: 20%;
+            height: auto;
             margin-right: 1rem;
             border-radius: 50%;
             border: 1px solid #fff;
@@ -288,10 +289,10 @@
     $(window).load(function () {
         initStyles();
     })
-    $(window).resize(function () {
-        initStyles();
-        window.location.replace(location);
-    });
+    // $(window).resize(function () {
+    //     initStyles();
+    //     window.location.replace(location);
+    // });
 
     function initStyles() {
         $("#topD").css("height", $("#bg-box").height() + "px");
