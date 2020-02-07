@@ -23,7 +23,7 @@
 
         .bg-box {
             background: linear-gradient(#f1c970, #f1c205);
-            padding-bottom: 9rem;
+            padding-bottom: 36%;
         }
 
         .bg-box div, .bg-box span {
@@ -39,8 +39,8 @@
         }
 
         .bg-box .top .b-img {
-            width: 20%;
-            height: auto;
+            width: 70px;
+            height: 70px;
             margin-right: 1rem;
             border-radius: 50%;
             border: 1px solid #fff;
