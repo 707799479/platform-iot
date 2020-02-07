@@ -82,6 +82,16 @@ public class AdminController {
         }
         return "login";
     }
+    
+    @RequestMapping("/startTest")
+    public String testStart(){
+    	 if(!checkHaveLogin()){
+             request.setAttribute("login_title","请先登录");
+             return "login";
+         }
+        return "start";
+    }
+    
 
     /**
      * 后台主页
