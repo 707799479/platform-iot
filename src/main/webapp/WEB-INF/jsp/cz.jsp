@@ -43,7 +43,7 @@
   }
 
     <c:if test="${openid == null}">
-      window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx09593ca188ca98a0&redirect_uri=http://www.${config.domain}/wxpublic/result&response_type=code&scope=snsapi_base&state=${agent.domain}#wechat_redirect';
+      <%--window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx09593ca188ca98a0&redirect_uri=http://www.${config.domain}/wxpublic/result&response_type=code&scope=snsapi_base&state=${agent.domain}#wechat_redirect';--%>
     </c:if>
 </script>
 </body>
