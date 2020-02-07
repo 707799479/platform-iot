@@ -23,7 +23,7 @@
 
         .bg-box {
             background: linear-gradient(#f1c970, #f1c205);
-            padding-bottom: 5rem;
+            padding-bottom: 9rem;
         }
 
         .bg-box div, .bg-box span {
@@ -39,8 +39,8 @@
         }
 
         .bg-box .top .b-img {
-            width: 70px;
-            height: 70px;
+            width: 20%;
+            height: auto;
             margin-right: 1rem;
             border-radius: 50%;
             border: 1px solid #fff;
@@ -72,6 +72,10 @@
             position: absolute;
             bottom: 28%;
             left: 0;
+        }
+
+        div {
+            overflow: initial
         }
 
         #flow_chartCvs {
