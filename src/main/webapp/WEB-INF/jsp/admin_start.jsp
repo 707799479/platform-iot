@@ -5,7 +5,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
     <title>续费充值中心</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
@@ -39,8 +39,8 @@
         }
 
         .bg-box .top .b-img {
-            max-width: 20%;
-            height: auto;
+            width: 70px;
+            height: 70px;
             margin-right: 1rem;
             border-radius: 50%;
             border: 1px solid #fff;
@@ -231,7 +231,7 @@
             </div>
         </div>
         <div class="foot">
-            <i></i>余额充值赠送活动开始啦
+            <i class="mdi mdi-bullhorn c3 mr-1"></i>余额充值赠送活动开始啦
         </div>
     </div>
 </div>
