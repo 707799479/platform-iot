@@ -243,41 +243,35 @@
 
 <div class="card lists">
     <ul>
-        <li>
+        <li onclick="tiao('admin/l_setmeal')">
             <div class="hui-speed-dial-icons">
                 <span class="mdi mdi-cash-usd"></span>
             </div>
-            <div class="text">余额查询</div>
+            <div class="text">套餐订购</div>
         </li>
-        <li>
+        <li onclick="tiao()">
             <div class="hui-speed-dial-icons">
                 <span class="hui-icons hui-icons-search"></span>
             </div>
-            <div class="text">套餐订购</div>
+            <div class="text">流量查询</div>
         </li>
-        <li>
+        <li onclick="tiao('admin/l_grant')">
             <div class="hui-speed-dial-icons">
                 <span class="mdi mdi-account-circle"></span>
             </div>
             <div class="text">实名登记</div>
         </li>
-        <li>
+        <li onclick="tiao()">
             <div class="hui-speed-dial-icons">
                 <span class="mdi mdi-web"></span>
             </div>
-            <div class="text">智能诊断</div>
+            <div class="text">APN设置</div>
         </li>
-        <li>
+        <li onclick="tiao()">
             <div class="hui-speed-dial-icons">
                 <span class="mdi mdi-webhook"></span>
             </div>
-            <div class="text">充值记录</div>
-        </li>
-        <li>
-            <div class="hui-speed-dial-icons">
-                <span class="mdi mdi-credit-card-multiple"></span>
-            </div>
-            <div class="text">换卡申请</div>
+            <div class="text">故障处理</div>
         </li>
     </ul>
 </div>
@@ -287,9 +281,19 @@
 
 </html>
 <script src="/js/jquery.js"></script>
+<script src="/js/hui.js"></script>
 <script type="text/javascript" src="/js/raphael.js"></script>
 <%--<script type="text/javascript" src="/js/config.js"></script>--%>
 <script>
+    function tiao(_arg) {
+        var istiao = _arg;
+        if(istiao){
+            window.location.href = "/" + istiao;
+        }else{
+            hui.toast('暂未开启，敬请期待');
+        }
+    }
+
     $(window).load(function () {
         initStyles();
     })

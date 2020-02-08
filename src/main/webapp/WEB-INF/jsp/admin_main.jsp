@@ -2,6 +2,12 @@
 
 <%@ include file="header.jsp" %>
 
+<style>
+    .stretch-card {
+        cursor: pointer;
+    }
+</style>
+
 <%@ include file="nav.jsp" %>
 
 <div class="content-wrapper">
@@ -31,18 +37,18 @@
     <div class="row c-pd-0 grid-cus">
 
 
-        <div class="col-lg-3 col-md-6 stretch-card grid-margin">
+        <div class="col-lg-3 col-md-6 stretch-card grid-margin" onclick="location='/admin/cardList'">
             <div class="card text-63">
                 <div class="card-body">
                     <h3 class="font-weight-normal mb-3">${phoneCardByCount}
                         <i class="mdi mdi-arrow-up mdi-36px c1"></i>
                     </h3>
-                    <h6>激活总数</h6>
+                    <h6>卡板总数</h6>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 stretch-card grid-margin">
+        <div class="col-lg-3 col-md-6 stretch-card grid-margin" onclick="location='/admin/orderList'">
             <div class="card text-63">
                 <div class="card-body">
                     <h3 class="font-weight-normal mb-3">${orderCount}
@@ -53,7 +59,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 stretch-card grid-margin">
+        <div class="col-lg-3 col-md-6 stretch-card grid-margin" onclick="location='/admin/agentList'">
             <div class="card text-63">
                 <div class="card-body">
                     <h3 class="font-weight-normal mb-3">${agentCount}
@@ -64,7 +70,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 stretch-card grid-margin">
+        <div class="col-lg-3 col-md-6 stretch-card grid-margin" onclick="location='/admin/extract'">
             <div class="card text-63">
                 <div class="card-body">
                     <h3 class="font-weight-normal mb-3">$ ${money}

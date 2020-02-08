@@ -90,9 +90,37 @@ public class AdminController {
              request.setAttribute("login_title","请先登录");
              return "login";
          }
-        return "admin_start";
+        return "start";
     }
-    
+
+    //实名认证页面
+    @RequestMapping("/l_grant")
+    public String testGrant(){
+        if(!checkHaveLogin()){
+            request.setAttribute("login_title","请先登录");
+            return "login";
+        }
+        return "grant";
+    }
+
+    //套餐页面
+    @RequestMapping("/l_setmeal")
+    public String testSetmeal(){
+        if(!checkHaveLogin()){
+            request.setAttribute("login_title","请先登录");
+            return "login";
+        }
+        return "setmeal";
+    }
+    //套餐页面
+    @RequestMapping("/l_setmeal2")
+    public String testSetmeal2(){
+        if(!checkHaveLogin()){
+            request.setAttribute("login_title","请先登录");
+            return "login";
+        }
+        return "setmeal2";
+    }
 
     /**
      * 后台主页
@@ -673,9 +701,9 @@ public class AdminController {
             return "login";
         }
         Agents user_agent = (Agents) request.getSession().getAttribute("user_agent");
-        if(user_agent.getParentId() == 0){
-            return "redirect:/admin/main";
-        }
+//        if(user_agent.getParentId() == 0){
+//            return "redirect:/admin/main";
+//        }
         if(s != null){
             //提现申请
 

@@ -11,7 +11,11 @@
                     <h4 class="card-title">提现</h4>
                     <br>
                     <div class="body">
-                        <div>
+                        <c:if test="${user_agent.parentId == 0}">
+                            <h1> 您还没有此权限</h1>
+                        </c:if>
+                        <c:if test="${user_agent.parentId == -1}">
+                            <div>
                             <div class="form-group">
                                 <label for="search-input">账户余额：</label>
                                 <div class="input-group" style="width:100%;">
@@ -32,6 +36,7 @@
                             <a style="width: 100%" class="btn btn-gradient-secondary btn-rounded btn-fw"
                                href="javascript:go(${user_agent.id})">申请提现</a>
                         </div>
+                        </c:if>
                     </div>
 
                 </div>
