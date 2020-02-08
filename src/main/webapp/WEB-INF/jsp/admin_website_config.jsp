@@ -6,7 +6,7 @@
 
     <div class="content-wrapper">
         <c:if test="${user_agent.parentId==0}">
-            <div class="col-lg-12 grid-margin stretch-card">
+            <div class="col-lg-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">总配置</h4>

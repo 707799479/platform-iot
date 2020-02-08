@@ -5,7 +5,7 @@
         <%@ include file="nav.jsp" %>
 
         <div class="content-wrapper">
-            <div class="col-lg-12 grid-margin stretch-card">
+            <div class="col-lg-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">批量划分</h4>
@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-12 grid-margin stretch-card">
+            <div class="col-lg-4 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">单张划分</h4>
