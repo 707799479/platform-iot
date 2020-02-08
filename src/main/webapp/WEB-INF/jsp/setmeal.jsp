@@ -155,8 +155,10 @@
         }
 
         .btn_wrap .okBtn {
-            padding: 0.8rem 1.6rem;
+            width: 36%;
+            padding: 0.8rem 0;
             font-size: 1rem;
+            text-align: center;
             background: #f1c205;
             margin-left: 1rem;
             color: #fff;
