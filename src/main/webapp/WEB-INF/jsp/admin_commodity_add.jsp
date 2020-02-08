@@ -2,6 +2,12 @@
 
     <%@ include file="header.jsp" %>
 
+    <style>
+        .form-group label {
+            line-height: 1.2rem;
+        }
+    </style>
+
         <%@ include file="nav.jsp" %>
 
         <div class="content-wrapper">

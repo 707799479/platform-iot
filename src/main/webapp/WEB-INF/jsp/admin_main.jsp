@@ -6,6 +6,31 @@
     .stretch-card {
         cursor: pointer;
     }
+
+    .grid-cus h3 i {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .grid-cus h3 i.kb {
+        background: url(/img/ka.png) no-repeat;
+        background-size: cover;
+    }
+
+    .grid-cus h3 i.dd {
+        background: url(/img/dd.png) no-repeat;
+        background-size: cover;
+    }
+
+    .grid-cus h3 i.dl {
+        background: url(/img/dl.png) no-repeat;
+        background-size: cover;
+    }
+
+    .grid-cus h3 i.ye {
+        background: url(/img/ye.png) no-repeat;
+        background-size: cover;
+    }
 </style>
 
 <%@ include file="nav.jsp" %>
@@ -41,7 +66,7 @@
             <div class="card text-63">
                 <div class="card-body">
                     <h3 class="font-weight-normal mb-3">${phoneCardByCount}
-                        <i class="mdi mdi-arrow-up mdi-36px c1"></i>
+                        <i class="kb mdi-36px c1"></i>
                     </h3>
                     <h6>卡板总数</h6>
                 </div>
@@ -52,7 +77,7 @@
             <div class="card text-63">
                 <div class="card-body">
                     <h3 class="font-weight-normal mb-3">${orderCount}
-                        <i class="mdi mdi-arrow-up mdi-36px c1"></i>
+                        <i class="dd mdi-36px c1"></i>
                     </h3>
                     <h6>订单数量</h6>
                 </div>
@@ -63,7 +88,7 @@
             <div class="card text-63">
                 <div class="card-body">
                     <h3 class="font-weight-normal mb-3">${agentCount}
-                        <i class="mdi mdi-arrow-up mdi-36px c1"></i>
+                        <i class="dl mdi-36px c1"></i>
                     </h3>
                     <h6>旗下代理</h6>
                 </div>
@@ -74,7 +99,7 @@
             <div class="card text-63">
                 <div class="card-body">
                     <h3 class="font-weight-normal mb-3">$ ${money}
-                        <i class="mdi mdi-arrow-up mdi-36px c1"></i>
+                        <i class="ye mdi-36px c1"></i>
                     </h3>
                     <h6>账户余额</h6>
                 </div>

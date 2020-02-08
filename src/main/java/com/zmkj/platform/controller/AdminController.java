@@ -83,7 +83,17 @@ public class AdminController {
         return "login";
     }
 
-//    流量页
+    //    充值
+    @RequestMapping("/cz")
+    public String cz(){
+        if(!checkHaveLogin()){
+            request.setAttribute("login_title","请先登录");
+            return "login";
+        }
+        return "cz";
+    }
+
+    //    流量页
     @RequestMapping("/start")
     public String testStart(){
     	 if(!checkHaveLogin()){

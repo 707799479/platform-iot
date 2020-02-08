@@ -39,6 +39,10 @@
             font-size: 0.94rem;
         }
 
+        .hui-button:active {
+            background: #f1c720;
+        }
+
         .info_c {
             padding: 1rem;
             font-size: 0.8rem;
