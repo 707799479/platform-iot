@@ -90,14 +90,6 @@
                     </ul>
                 </div>
             </li>
-            <c:if test="${user_agent.parentId==0}">
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/websiteConfig">
-                        <i class="mdi mdi-earth menu-icon"></i>
-                        <span class="menu-title">网站配置</span>
-                    </a>
-                </li>
-            </c:if>
             <li class="nav-item">
                 <a class="nav-link" href="/admin/orderList">
                     <i class="mdi mdi-elevation-decline menu-icon"></i>
@@ -110,12 +102,91 @@
 <%--                    <span class="menu-title">修改密码</span>--%>
 <%--                </a>--%>
 <%--            </li>--%>
+<%--            <li class="nav-item">--%>
+<%--                <a class="nav-link" href="/admin/cardList">--%>
+<%--                    <i class="mdi mdi-clipboard-text menu-icon"></i>--%>
+<%--                    <span class="menu-title">卡片列表</span>--%>
+<%--                </a>--%>
+<%--            </li>--%>
             <li class="nav-item">
-                <a class="nav-link" href="/admin/cardList">
-                    <i class="mdi mdi-clipboard-text menu-icon"></i>
-                    <span class="menu-title">卡片列表</span>
+                <a class="nav-link" data-toggle="collapse" href="#SIM_m" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="mdi mdi mdi-view-dashboard menu-icon"></i>
+                    <span class="menu-title">SIM卡管理</span>
+                    <i class="menu-arrow"></i>
                 </a>
+                <div class="collapse" id="SIM_m">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="/admin/cardList">卡片列表</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="">卡片回收</a></li>
+                    </ul>
+                </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#system_m" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="mdi mdi-settings menu-icon"></i>
+                    <span class="menu-title">系统管理</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="system_m">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="">禁区设定</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="">站点配置</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="">工单处理</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="">预存管理</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#prop_m" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="mdi mdi-bell menu-icon"></i>
+                    <span class="menu-title">通知查询</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="prop_m">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="">激活地点</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="">信息发送</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#interface_o" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="mdi mdi-ethernet-cable menu-icon"></i>
+                    <span class="menu-title">接口操作</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="interface_o">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="">套餐转移</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="">机卡解绑</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="">批量激活</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="">超级轮询</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#record_q" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="mdi mdi mdi-lead-pencil menu-icon"></i>
+                    <span class="menu-title">记录查询</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="record_q">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="">划分记录</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="">订单记录</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="">返佣记录</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="">预存记录</a></li>
+                    </ul>
+                </div>
+            </li>
+            <c:if test="${user_agent.parentId==0}">
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/websiteConfig">
+                        <i class="mdi mdi-earth menu-icon"></i>
+                        <span class="menu-title">网站配置</span>
+                    </a>
+                </li>
+            </c:if>
             <li class="nav-item sidebar-actions">
             <span class="nav-link">
               <div class="mt-4">
